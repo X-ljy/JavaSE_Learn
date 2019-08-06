@@ -1,7 +1,6 @@
 package com.ljy.learn_reflect;
 
-import com.fasterxml.jackson.databind.util.ClassUtil;
-
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -9,11 +8,11 @@ import java.lang.reflect.Method;
  * @author : 夕
  * @date : 2019/8/6
  */
-public class CLassUtil {
+public class MyCLassUtil {
     /**
-     * 打印类的信息，包括类的成员函数，成员变量
+     * 打印类的信息，包括类的成员函数
      */
-    public static void printClassMessage(Object object){
+    public static void printMethodsMessage(Object object){
         //要获取类的信息，首先获取类的类类型
         Class c = object.getClass(); //传递的是哪个子类的对象，c 就是该子类的类类型
         //获取类的名称
@@ -42,8 +41,15 @@ public class CLassUtil {
             }
             System.out.println();
         }
+    }
 
-        System.out.println("---------------------------------------------------------");
+    /**
+     * 打印类的信息，包括类的成员变量
+     */
+    public static void printFieldMessage(Object object){
+
+        //要获取类的信息，首先获取类的类类型
+        Class c = object.getClass(); //传递的是哪个子类的对象，c 就是该子类的类类型
         System.out.println("成员变量数据：成员变量类型  成员变量的名称");
         /**
          * 成员变量也是对象
@@ -63,9 +69,34 @@ public class CLassUtil {
         }
     }
 
-    public static void main(String[] args) {
+    /**
+     * 获取构造函数信息
+     */
+    public static void printConMessage(Object object){
+        Class c = object.getClass();
+        /**
+         * 构造函数也是对象
+         * java.lang.reflect.Constructor中封装了构造函数的信息
+         *getConstructors() 获取public的构造函数
+         * getDeclaredConstructors() 获取该类自己声明的构造函数
+         */
+        Constructor[] constructors = c.getDeclaredConstructors();
 
+        for(Constructor constructor : constructors){
+            System.out.print(constructor.getName() + " : ");
+            Class[] paramTypes = constructor.getParameterTypes();
+            for(Class class1 : paramTypes){
+                System.out.print(class1.getSimpleName()+" ");
+            }
+            System.out.println();
+        }
+    }
+    public static void main(String[] args) {
         String str = "test";
-        CLassUtil.printClassMessage(str);
+        MyCLassUtil.printMethodsMessage(str);
+        System.out.println("---------------------------");
+        MyCLassUtil.printFieldMessage(str);
+        System.out.println("----------------------------");
+        MyCLassUtil.printConMessage(str);
     }
 }

@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author : 夕
  * @date : 2019/8/6
  */
-public class Demo02 {
+public class ClassDemo02 {
     //Java动态加载类
     /**
      * Class.forName(""类的全称)，不仅表示对象的类类型，还代表动态加载类。

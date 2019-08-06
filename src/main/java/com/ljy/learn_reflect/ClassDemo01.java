@@ -4,7 +4,7 @@ package com.ljy.learn_reflect;
  * @author : 夕
  * @date : 2019/8/5
  */
-public class Demo01 {
+public class ClassDemo01 {
 
     public static void main(String[] args) throws ClassNotFoundException {
 
