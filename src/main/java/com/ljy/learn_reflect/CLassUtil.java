@@ -2,6 +2,7 @@ package com.ljy.learn_reflect;
 
 import com.fasterxml.jackson.databind.util.ClassUtil;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
@@ -40,8 +41,25 @@ public class CLassUtil {
                 System.out.print(class1.getSimpleName()+" ");
             }
             System.out.println();
+        }
 
-
+        System.out.println("---------------------------------------------------------");
+        System.out.println("成员变量数据：成员变量类型  成员变量的名称");
+        /**
+         * 成员变量也是对象
+         * java.lang.reflect.Field
+         * Field类封装了关于成员变量的操作
+         * getFields() 获取所有public的成员变量的信息
+         * getDeclaredFields() 获取的是该类自己声明的成员变量的信息
+         */
+        Field[] fields = c.getDeclaredFields();
+        for(Field field : fields ){
+            //得到成员变量类型的类类型
+            Class fieldType = field.getType();
+            String typeName = fieldType.getSimpleName();
+            //得到成员变量的名称
+            String fieldName = field.getName();
+            System.out.println(typeName + "   :   " + fieldName);
         }
     }
 
