@@ -1,16 +1,16 @@
 package com.ljy.code_interview.observer;
 
 /**
- * @author : Ï¦
+ * @author : ?
  * @date : 2020/4/10
  */
 public class Client {
 
     public static void main(String[] args) {
-        Customer customer = new Customer("ÂÞ½ðÓî");
+        Customer customer = new Customer("?????");
         ProductManager productManager = new ProductManager();
         productManager.registerObserver(customer);
-        productManager.setInfo("¶ÌÐä",100);
-        productManager.setInfo("³¤¿ã",100);
+        productManager.setInfo("????",100);
+        productManager.setInfo("????",100);
     }
 }
